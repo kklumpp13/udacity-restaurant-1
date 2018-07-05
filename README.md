@@ -14,7 +14,7 @@ For the **Restaurant Reviews** projects, you will incrementally convert a static
 ### Accessibility Updates
 The following updates were made to make this app more accessible:
 * The `lang` attribute was added to the `<html>` tag
-* All caps text was removed to improve legibility
+* All caps text was removed to improve readability
 * Colors were updated to meet color contrast requirements
 * Units were switched to rem accomodate text resizing
 * `line-height` was set to 1.5 to improve legibility
@@ -23,27 +23,21 @@ The following updates were made to make this app more accessible:
 * Alt text was added to the images
 * Text was set to be at least 16px
 * Missing labels were added to both `<select>` elements 
-* Link buttons expanded to 100%
-* Hover - `text-decoration` is removed on hover 
+* Link buttons expanded to 100% to increase touch target
+* `text-decoration` is set to `none` on hover 
 * A custom focus style was added to ensure consistency across browsers
+* `em` used for media query to improve experience when text is resized
+* Let keyboard user 'click' on map markers
+* Text resizing up to 200%
+* Can use a keyboard to do everything a mouse can
+* skip link added
 
 ### To Do
-* test on screen reaader
-* keyboard
-* focus styles - box shadow selects
-* hover styles
-* test rotor
-* test heading levels
-* semantic html tags
-* regions
-* fix map on detail view
-* update SW
-* text resizing
-* skip link
-* map doesn't work with keyboard
-* test safari and ff
-* spacing needs to be consistent between rules
-* map focus styles
+* Choose an accessible color palette that isn't as painful to look at
+
+
+
+
 
 
 

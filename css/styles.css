@@ -2,7 +2,8 @@
 /* CSS Document */
 
 *, *:before, *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -15,62 +16,101 @@ body,td,th,p,select{
 	color: #333;
 	line-height: 1.5;
 }
+
 body {
 	background-color: #fdfdfd;
 	margin: 0;
 	position:relative;
 }
+
 ul, li {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #333;
 }
+
 /* Padding added so focus line doesn't touch text */
 a {
   text-decoration: underline;
   color: #3455DB;  
-  padding: 0 2px;
+  padding: 0 0.125rem;
 }
+
 a:hover, 
 a:focus {
   text-decoration: none;
 }
+
 a:hover {
   color: #d43900;
 }
+
 a img{
-	border: none 0px #fff;
+	border: none 0 #fff;
 }
+
 h1, h3, h4, h5, h6 {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
   max-width: 100%;
 }
+
 #footer {
   background-color: #444;
   color: #fff;
-  font-size: .875rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
   padding: 25px;
   text-align: center;
 }
 
 #footer a {
   color: #e6a522;
-  /* add padding for focus outline */
-  display: inline-block;
-  padding: 0 2px;
 }
 
 #footer a:focus {
   outline: 3px solid #fff;
 }
+
+/* ====================== Skip Link ====================== */
+#skip-link {        
+  color: #fff;
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  height: 1px;
+  width: 1px;
+  text-align: left;
+  overflow: hidden; 
+  padding: 5px;
+}
+
+#skip-link:active,
+#skip-link:focus,
+#skip-link:hover {
+  outline: none; 
+  -webkit-box-shadow: 0 0 0 3px #fff; 
+          box-shadow: 0 0 0 3px #fff; 
+  left: 10px;
+  top: 15px;
+  width: auto;
+  height: auto; 
+  overflow: visible;
+  z-index: 1;
+  -webkit-transition: top 300ms ease;
+  -o-transition: top 300ms ease;
+  transition: top 300ms ease;
+  text-decoration: underline;           
+}
+
+/* ====================== Visually Hidden Content ====================== */
 
 .visually-hidden {
   border: 0; 
@@ -83,13 +123,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   width: 1px;
 }
 
-/* ====================== Grid ====================== */
-.grid {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr) );
-}
-
 /* ====================== Navigation ====================== */
 nav {
   width: 100%;
@@ -97,25 +130,37 @@ nav {
   background-color: #252831;
   text-align:center;
 }
+
 nav h1 {
   margin: auto;
   padding: 0.625rem 0;
 }
+
 nav h1 a {
   color: #fff;
   font-weight: 200;
-  letter-spacing: 0.625rem;
+  letter-spacing: 0.2rem;
   /* No text decoration because it is not next to other text */
   text-decoration: none; 
   display: inline-block;
   padding: 0 2px 0 7px;
 }
+
+@media screen and (min-width: 41.667em) {
+  nav h1 a {
+    letter-spacing: 0.625rem;
+  }
+}
+
 nav h1 a:focus {
   outline: 3px solid #fff;
 }
+
 nav h1 a:hover {
   text-decoration: underline;
+  color: #fff;
 }
+
 #breadcrumb {
   padding: 10px 40px 16px;
   list-style: none;
@@ -152,15 +197,21 @@ nav h1 a:hover {
 
 /* ====================== Map ====================== */
 #map {
-  height: 400px;
+  height: 25rem;
   width: 100%;
   background-color: #ccc;
+} 
+
+#map:focus {
+  outline: 3px solid #d43900;
 }
+
 /* ====================== Restaurant Filtering ====================== */
 /* Text is left aligned to improve readability */
 .filter-options {
   background-color: #204585;
 }
+
 .filter-options h2 {
   color: white;
   font-size: 1.25rem;
@@ -168,34 +219,55 @@ nav h1 a:hover {
   padding: 0.625rem;
   margin: 0;
 }
+
 .filter-options select {
   background-color: white;
   border: 1px solid #fff;
   font-family: Arial,sans-serif;
-  height: 35px;
+  height: 2.188rem;
   letter-spacing: 0;
-  margin: 10px;
+  margin: 0.625rem;
   padding: 0 10px;
-  min-width: 200px;
+  width: 90%;
+}
+
+@media screen and (min-width: 41.667em) {
+  .filter-options select {
+    width: 350px;
+  }
 }
 
 .filter-options select:focus {
   /* Use box-shadow to respect the curved edges */
   outline: none;
-  box-shadow: inset 0 0 0 1px #204585, 0 0 0 3px #fff;
+  -webkit-box-shadow: inset 0 0 0 1px #204585, 0 0 0 3px #fff;
+          box-shadow: inset 0 0 0 1px #204585, 0 0 0 3px #fff;
   border-color: #204585;
 }
 
 /* ====================== Restaurant Listing ====================== */
+.restaurant-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr) );
+}
+
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
   padding: 1rem;
 }
+
 #restaurants-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
@@ -210,7 +282,8 @@ nav h1 a:hover {
   margin: 0;
   width: 100%;
 }
-#restaurants-list li h1 {
+
+#restaurants-list li h2 {
   color: #d43900;
   font-family: Arial,sans-serif;
   font-size: 1.25rem;
@@ -218,15 +291,19 @@ nav h1 a:hover {
   letter-spacing: 0;
   margin: 10px 0;
 }
+
 #restaurants-list p {
   margin: 0;
 }
+
 #restaurants-list p:last-of-type {
   padding-bottom: 15px;
 }
+
 /* Text decoration added to help users understand this is a link not a button */
 #restaurants-list li a {
   background-color: #d43900;
+  /* Border keeps white gap between link and focus ring even on focus */
   border: 3px solid #fff;
   border-bottom: 3px solid #eee;
   color: #fff;
@@ -238,69 +315,59 @@ nav h1 a:hover {
 
 #restaurants-list li a:focus {
   outline: 3px solid #2e456d;
+  /* Underline is kept to avoid too much movement on focus */
+  text-decoration: underline;
 }
 
 /* ====================== Restaurant Details ====================== */
 
 .grid-container {
+  display: -ms-grid;
   display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr) );
-   */
-  /* grid-template-rows: 1fr; */
-  /* grid-template-columns: 1fr; */
   grid-gap: 15px;
-  /* min-height: 100%; */
-  /* grid-template-columns: repeat(auto-fill, minmax(270px, 1fr) ); */
-  grid-template-areas: 
+      grid-template-areas: 
     "restaurant"
     "reviews"
     "map";
 }
-@media screen and (min-width: 650px) {
+
+@media screen and (min-width: 54.167em) {
   .grid-container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
+        -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
       "restaurant map"
       "reviews map"
   }
 }
-.inside header {
-  /* position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000; */
-}
+
 .inside #map-container {
-  /* background: blue none repeat scroll 0 0; */
-  /* height: 100%; */
-  /* position: fixed;
-  right: 0;
-  top: 80px;
-  width: 50%; */
-  /* border: 1px solid purple; */
-  height: 500px;
+  height: 31.25rem;
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
   grid-area: map;
 }
-@media screen and (min-width: 650px) {
-  .inside #map-container{
-    height: 100%;
-  }
-}
+
 .inside #map {
   background-color: #ccc;
-  height: 100%;
-  width: 100%;
+  height: 99%;
+  width: 99%;
 }
-.inside #footer {
-  /* bottom: 0;
-  position: absolute;
-  width: 50%; */
+
+.inside #map {
+  padding: 2px;
 }
-#restaurant-details-wrapper {
-  /* overflow: auto; */
-  color: purple;
+
+.inside #map:focus {
+  outline: 3px solid #2e456d;
+}   
+
+@media screen and (min-width: 54.167em) {
+  .inside #map-container {
+    height: 50%;
+  }
 }
+
 #restaurant-name {
   color: #d43900;
   font-family: Arial,sans-serif;
@@ -308,72 +375,101 @@ nav h1 a:hover {
   letter-spacing: 0;
   margin: 15px 0 30px;
 }
+
 #restaurant-img {
 	width: 90%;
 }
+
 #restaurant-address {
-  margin: 10px 0px;
+  margin: 10px 0;
 }
+
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
   font-weight: 300;
-  letter-spacing: 10px;
+  letter-spacing: 0.625rem;
   margin: 0 0 20px;
   padding: 2px 0;
   text-align: center;
 	width: 90%;
 }
+
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  /* padding: 140px 40px 30px; */
   padding: 40px;
-  /* width: 50%; */
 }
+
 #restaurant-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: restaurant;
 }
+
 #reviews-container {
-  padding: 30px 40px 80px;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: reviews;
 }
+
+@media screen and (min-width: 54.167em) {
+  .inside #map-container {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2
+  }
+  #restaurant-container {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1
+  }
+  #reviews-container {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1
+  }
+}
+
 #reviews-container h2 {
   color: #d43900;
   font-weight: 300;
-  letter-spacing: -1px;
-  padding-bottom: 1pt;
 }
+
 #reviews-list {
   margin: 0;
   padding: 0;
 }
+
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
   padding: 20px;
   position: relative;
-  width: 85%;
+  width: 100%;
 }
+
+@media screen and (min-width: 54.167em) {
+  #reviews-container {
+    padding: 30px 40px 80px;
+  }
+  #reviews-list li {
+    width: 85%;
+  }
+}
+
 #reviews-list li p {
   margin: 0 0 10px;
 }
+
 #restaurant-hours td {
   color: #666;
 }
 
 /* ====================== Leaflet ====================== */
-.inside #map {
-  padding: 2px;
-}
 
-.inside #map:focus {
-  outline: 3px solid #2e456d;
-}
 /* Doubled to override leaflet.css */
 .leaflet-container .leaflet-control-attribution.leaflet-control-attribution {
   font-size: 1rem;
@@ -383,12 +479,10 @@ nav h1 a:hover {
 .leaflet-control-attribution.leaflet-control-attribution a {
   text-decoration: underline;
   color: #3455DB;
-  padding: 0 2px;
 }
 
 .leaflet-control-attribution.leaflet-control-attribution a:hover {
   text-decoration: none;
-  color: #d43900;
 }
 
 .leaflet-control-attribution.leaflet-control-attribution a:focus,

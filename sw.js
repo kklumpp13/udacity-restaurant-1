@@ -1,4 +1,4 @@
-let staticCacheName = 'restaurant-static-v2';
+let staticCacheName = 'restaurant-static-v3';
 const urlsToCache = [
   '/',
   'index.html',
