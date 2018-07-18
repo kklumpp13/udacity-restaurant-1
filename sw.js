@@ -1,4 +1,4 @@
-let staticCacheName = 'restaurant-static-v4';
+let staticCacheName = 'restaurant-static-v3';
 const urlsToCache = [
   '/',
   'index.html',
@@ -49,7 +49,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
+    caches.match(event.request, {ignoreSearch: true}).then(response => {
       if(response) return response;
       return fetch(event.request);
     })

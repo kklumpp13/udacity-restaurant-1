@@ -178,7 +178,7 @@ createRestaurantHTML = (restaurant) => {
 
   // Add a more descriptive text link for screen reader navigation menus
   const more = document.createElement('a');
-  more.innerHTML = `View <span class="visually-hidden">${restaurant.name}</span> Details`;
+  more.innerHTML = `<span class="visually-hidden">${restaurant.name}: </span> View Details`;
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
   
